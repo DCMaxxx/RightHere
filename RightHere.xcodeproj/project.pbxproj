@@ -51,6 +51,8 @@
 		9C9779A917AD23FC00BA30F4 /* UIImage+WebP.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97799A17AD23FC00BA30F4 /* UIImage+WebP.m */; };
 		9C9779AA17AD23FC00BA30F4 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C97799C17AD23FC00BA30F4 /* UIImageView+WebCache.m */; };
 		9C9779AD17AD240600BA30F4 /* UIImageView+UIActivityIndicatorForSDWebImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C9779AC17AD240600BA30F4 /* UIImageView+UIActivityIndicatorForSDWebImage.m */; };
+		9C9779AF17AD271100BA30F4 /* 57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C9779AE17AD271100BA30F4 /* 57x57.png */; };
+		9C9779B117AD273C00BA30F4 /* 114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C9779B017AD273C00BA30F4 /* 114x114.png */; };
 		9CD73B5A17AB58C10058D39F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CD73B5917AB58C10058D39F /* UIKit.framework */; };
 		9CD73B5C17AB58C10058D39F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CD73B5B17AB58C10058D39F /* Foundation.framework */; };
 		9CD73B5E17AB58C10058D39F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CD73B5D17AB58C10058D39F /* CoreGraphics.framework */; };
@@ -144,6 +146,8 @@
 		9C97799C17AD23FC00BA30F4 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		9C9779AB17AD240600BA30F4 /* UIImageView+UIActivityIndicatorForSDWebImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+UIActivityIndicatorForSDWebImage.h"; sourceTree = "<group>"; };
 		9C9779AC17AD240600BA30F4 /* UIImageView+UIActivityIndicatorForSDWebImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+UIActivityIndicatorForSDWebImage.m"; sourceTree = "<group>"; };
+		9C9779AE17AD271100BA30F4 /* 57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 57x57.png; path = ../57x57.png; sourceTree = "<group>"; };
+		9C9779B017AD273C00BA30F4 /* 114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 114x114.png; path = ../114x114.png; sourceTree = "<group>"; };
 		9CD73B5617AB58C10058D39F /* RightHere.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RightHere.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CD73B5917AB58C10058D39F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9CD73B5B17AB58C10058D39F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -301,6 +305,15 @@
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
+		9C9779B217AD279300BA30F4 /* App icon */ = {
+			isa = PBXGroup;
+			children = (
+				9C9779B017AD273C00BA30F4 /* 114x114.png */,
+				9C9779AE17AD271100BA30F4 /* 57x57.png */,
+			);
+			name = "App icon";
+			sourceTree = "<group>";
+		};
 		9CD73B4D17AB58C10058D39F = {
 			isa = PBXGroup;
 			children = (
@@ -404,6 +417,7 @@
 			isa = PBXGroup;
 			children = (
 				9C97796C17AD236200BA30F4 /* placeholder.png */,
+				9C9779B217AD279300BA30F4 /* App icon */,
 				9CD73B8E17AB6C620058D39F /* Launch image */,
 			);
 			name = Images;
@@ -491,6 +505,8 @@
 				9C97797117AD237200BA30F4 /* Default-568h@2x.png in Resources */,
 				9C97797217AD237200BA30F4 /* Default.png in Resources */,
 				9C97797317AD237200BA30F4 /* Default@2x.png in Resources */,
+				9C9779AF17AD271100BA30F4 /* 57x57.png in Resources */,
+				9C9779B117AD273C00BA30F4 /* 114x114.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
