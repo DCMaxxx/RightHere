@@ -13,7 +13,8 @@
 
 @property (strong, nonatomic, readonly) NSString * text;
 @property (strong, nonatomic, readonly) NSURL * pictureURL;
+@property (strong, nonatomic, readonly) NSString * userId;
 
-- (id)initWithText:(NSString *)text andPictureURL:(NSURL *)url;
+- (id)initWithText:(NSString *)text userId:(NSString *)userId andPictureURL:(NSURL *)url;
 
 @end
