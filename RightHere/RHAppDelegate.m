@@ -19,7 +19,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkChanged:) name:kReachabilityChangedNotification object:nil];
     _reachability = [Reachability reachabilityForInternetConnection];
     [_reachability startNotifier];
-    if ([CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorized) {
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
         UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"Location manager"
                                                       message:@"I can't get your position. Please fix it in settings."
                                                      delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
