@@ -10,12 +10,13 @@
 
 #import "RHUser.h"
 
-
+#import "RHUserViewController.h"
 @interface RHInstagram : NSObject
 
 @property (strong, nonatomic) NSArray * posts;
 @property (strong, nonatomic) NSError * error;
-@property (strong, nonatomic) RHUser * user;
+
+@property (weak, nonatomic) RHUserViewController * userViewController;
 
 - (void)getMediasFromPlaceId:(NSString *)placeId;
 - (void)searchForUserWithId:(NSString *)userId;

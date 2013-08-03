@@ -30,7 +30,6 @@
 		9C8786BB17ACC4FE009C0EBC /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8786BA17ACC4FE009C0EBC /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9C8786C017ACDA67009C0EBC /* RHUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8786BF17ACDA67009C0EBC /* RHUserViewController.m */; };
 		9C8786C317ACDAB7009C0EBC /* RHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8786C217ACDAB7009C0EBC /* RHUser.m */; };
-		9C8786C717ACE633009C0EBC /* RHWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8786C617ACE633009C0EBC /* RHWebViewController.m */; };
 		9CD73B5A17AB58C10058D39F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CD73B5917AB58C10058D39F /* UIKit.framework */; };
 		9CD73B5C17AB58C10058D39F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CD73B5B17AB58C10058D39F /* Foundation.framework */; };
 		9CD73B5E17AB58C10058D39F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CD73B5D17AB58C10058D39F /* CoreGraphics.framework */; };
@@ -90,8 +89,6 @@
 		9C8786BF17ACDA67009C0EBC /* RHUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHUserViewController.m; sourceTree = "<group>"; };
 		9C8786C117ACDAB7009C0EBC /* RHUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHUser.h; sourceTree = "<group>"; };
 		9C8786C217ACDAB7009C0EBC /* RHUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHUser.m; sourceTree = "<group>"; };
-		9C8786C517ACE633009C0EBC /* RHWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHWebViewController.h; sourceTree = "<group>"; };
-		9C8786C617ACE633009C0EBC /* RHWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHWebViewController.m; sourceTree = "<group>"; };
 		9CD73B5617AB58C10058D39F /* RightHere.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RightHere.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CD73B5917AB58C10058D39F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9CD73B5B17AB58C10058D39F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -212,15 +209,6 @@
 			name = "User view";
 			sourceTree = "<group>";
 		};
-		9C8786C417ACE621009C0EBC /* Web view */ = {
-			isa = PBXGroup;
-			children = (
-				9C8786C517ACE633009C0EBC /* RHWebViewController.h */,
-				9C8786C617ACE633009C0EBC /* RHWebViewController.m */,
-			);
-			name = "Web view";
-			sourceTree = "<group>";
-		};
 		9CD73B4D17AB58C10058D39F = {
 			isa = PBXGroup;
 			children = (
@@ -299,7 +287,6 @@
 				9C8786AA17ABEFF4009C0EBC /* Instagram */,
 				9CD73B8817AB6BAF0058D39F /* Main view */,
 				9C8786BD17ACDA43009C0EBC /* User view */,
-				9C8786C417ACE621009C0EBC /* Web view */,
 				9C8786A617ABE3A8009C0EBC /* UICollectionViewCell */,
 				9C8786B517ACBF74009C0EBC /* Network activity */,
 				9CD73B8C17AB6C240058D39F /* Other sources */,
@@ -440,7 +427,6 @@
 				9C8786BB17ACC4FE009C0EBC /* Reachability.m in Sources */,
 				9C8786C017ACDA67009C0EBC /* RHUserViewController.m in Sources */,
 				9C8786C317ACDAB7009C0EBC /* RHUser.m in Sources */,
-				9C8786C717ACE633009C0EBC /* RHWebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

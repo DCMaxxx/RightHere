@@ -179,8 +179,7 @@
         NSUInteger index = [path row];
         RHPost * post = [_posts objectAtIndex:index];
         RHUserViewController * vc = [segue destinationViewController];
-        [_instagramSearcher addObserver:vc forKeyPath:@"user" options:NSKeyValueObservingOptionNew context:nil];
-        [_instagramSearcher addObserver:vc forKeyPath:@"error" options:NSKeyValueObservingOptionNew context:nil];
+        [_instagramSearcher setUserViewController:vc];
         [_instagramSearcher searchForUserWithId:[post userId]];
     }
 }

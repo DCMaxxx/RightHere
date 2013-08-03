@@ -147,7 +147,7 @@
     NSString * bio = ([parsedData[@"bio"] isKindOfClass:[NSString class]] ? parsedData[@"bio"] : @"");
     NSString * website = ([parsedData[@"website"] isKindOfClass:[NSString class]] ? parsedData[@"website"] : @"");
     
-    dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
     dispatch_async(concurrentQueue, ^{
         if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] != NotReachable) {
             [[RHNetworkActivityHandler sharedInstance] startNetworkTask];
@@ -155,7 +155,11 @@
             [[RHNetworkActivityHandler sharedInstance] endNetworkTask];
             dispatch_async(dispatch_get_main_queue(), ^{
                 UIImage * picture = [UIImage imageWithData:data];
-                self.user = [[RHUser alloc] initWithUserName:userName fullName:fullName webSite:website bio:bio andPicture:picture];
+                [_userViewController updateUIWithUser:[[RHUser alloc] initWithUserName:userName
+                                                                              fullName:fullName
+                                                                               webSite:website
+                                                                                   bio:bio
+                                                                            andPicture:picture]];
             });
         }
     });

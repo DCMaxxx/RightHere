@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "RHUser.h"
 
 @interface RHUserViewController : UIViewController
+
+- (void)updateUIWithUser:(RHUser *)user;
 
 @end
