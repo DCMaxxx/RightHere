@@ -9,7 +9,7 @@ This is an assignment for an RMIT project.
 The subject was :
 > Do whatever you want, as long as :
 > + it parses data obtained through a JSON Api using NSJSONSerialization
-> + uses a UINavigationController, and you can go deep one level, and come back
+> + uses an UINavigationController, and you can go deep one level, and come back
 > + uses an UITableView
 
 (Yes, I might be simplifying a little)
