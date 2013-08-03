@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Maxime de Chalendar. All rights reserved.
 //
 
+#import "UIImageView+UIActivityIndicatorForSDWebImage.h"
 #import "Reachability.h"
 
 #import "RHViewController.h"
@@ -154,17 +155,18 @@
 
     [[cell description] setText:[post text]];
 
-    dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_async(concurrentQueue, ^{
-        if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] != NotReachable) {
-            [[RHNetworkActivityHandler sharedInstance] startNetworkTask];
-            NSData *image = [[NSData alloc] initWithContentsOfURL:post.pictureURL];
-            [[RHNetworkActivityHandler sharedInstance] endNetworkTask];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [[cell picture] setImage:[UIImage imageWithData:image]];
-            });
-        }
-    });
+//    dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    dispatch_async(concurrentQueue, ^{
+//        if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] != NotReachable) {
+//            [[RHNetworkActivityHandler sharedInstance] startNetworkTask];
+//            NSData *image = [[NSData alloc] initWithContentsOfURL:post.pictureURL];
+//            [[RHNetworkActivityHandler sharedInstance] endNetworkTask];
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [[cell picture] setImage:[UIImage imageWithData:image]];
+//            });
+//        }
+//    });
+    [[cell picture] setImageWithURL:[post pictureURL] placeholderImage:[UIImage imageNamed:@"placeholder.png"] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     return cell;
 }
 

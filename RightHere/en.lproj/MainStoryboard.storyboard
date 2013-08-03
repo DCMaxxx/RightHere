@@ -36,7 +36,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="9Cj-Oh-bPW"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -66,7 +66,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="41" id="ioo-ni-7cU"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -235,6 +235,7 @@
         <class className="RHUserViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RHUserViewController.h"/>
             <relationships>
+                <relationship kind="action" name="touchedWebsite:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="bio" candidateClass="UITextView"/>
                 <relationship kind="outlet" name="fullName" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="picture" candidateClass="UIImageView"/>
