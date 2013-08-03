@@ -40,7 +40,7 @@ typedef enum { eNearby, eNameSearch } eRequestKind;
         _locationManager = [[CLLocationManager alloc] init];
         [_locationManager setDistanceFilter:kCLDistanceFilterNone];
         [_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
-        if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized) {
+        if ([CLLocationManager authorizationStatus] != kCLAuthorizationStatusDenied) {
             [_locationManager startUpdatingLocation];
         }
         _client = [[RHFoursquareClient alloc] init];
