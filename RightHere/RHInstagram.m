@@ -39,7 +39,7 @@
 }
 
 /*----------------------------------------------------------------------------*/
-#pragma mark - Getting medias
+#pragma mark - Getting instagram informations
 /*----------------------------------------------------------------------------*/
 - (void)getMediasFromPlaceId:(NSString *)placeId {
     NSMutableURLRequest * request = [_client requestWithMethod:@"GET" path:@"locations/search" parameters:@{@"foursquare_v2_id": placeId,
@@ -74,6 +74,24 @@
     }
 }
 
+- (void)searchForUserWithId:(NSString *)userId {
+    NSString * path = [NSString stringWithFormat:@"users/%@", userId];
+    NSMutableURLRequest * request = [_client requestWithMethod:@"GET" path:path parameters:@{@"authentication": @(YES)}];
+    AFHTTPRequestOperation * operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [[RHNetworkActivityHandler sharedInstance] endNetworkTask];
+        [self parseForUser:responseObject];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [[RHNetworkActivityHandler sharedInstance] endNetworkTask];
+        self.error = error;
+    }];
+     if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] != NotReachable) {
+         [[RHNetworkActivityHandler sharedInstance] startNetworkTask];
+         [operation start];
+     }    
+}
+
+
 /*----------------------------------------------------------------------------*/
 #pragma mark - Parsing Instagram's response
 /*----------------------------------------------------------------------------*/
@@ -97,20 +115,50 @@
             && [post[@"type"] isEqualToString:@"image"]) {
             id caption = post[@"caption"];
             NSString * text = [[NSString alloc] init];
-            if ([caption isKindOfClass:[NSDictionary class]] && [caption[@"text"] isKindOfClass:[NSString class]])
-                text = caption[@"text"];
+            NSString * userId = [[NSString alloc] init];
+            if ([caption isKindOfClass:[NSDictionary class]]) {
+                if ([caption[@"text"] isKindOfClass:[NSString class]])
+                    text = caption[@"text"];
+                id user = caption[@"from"];
+                if ([user isKindOfClass:[NSDictionary class]] && [user[@"id"] isKindOfClass:[NSString class]])
+                    userId = user[@"id"];
+            }
             id image = post[@"images"];
             NSString * url = [[NSString alloc] init];
             if ([image isKindOfClass:[NSDictionary class]] && [image[@"thumbnail"] isKindOfClass:[NSDictionary class]]
                 && [image[@"thumbnail"][@"url"] isKindOfClass:[NSString class]])
                 url = image[@"thumbnail"][@"url"];
             if ([text length] || [url length]) {
-                RHPost * post = [[RHPost alloc] initWithText:text andPictureURL:[NSURL URLWithString:url]];
+                RHPost * post = [[RHPost alloc] initWithText:text userId:userId andPictureURL:[NSURL URLWithString:url]];
                 [result addObject:post];
             }
         }
     }
     return result;
+}
+
+- (void)parseForUser:(id)data {
+    NSDictionary * parsedData = [self dataDictionaryFromData:data];
+    if (!parsedData)
+        return ;
+    NSString * userName = ([parsedData[@"username"] isKindOfClass:[NSString class]] ? parsedData[@"username"] : @"");
+    NSString * fullName = ([parsedData[@"full_name"] isKindOfClass:[NSString class]] ? parsedData[@"full_name"] : @"");
+    NSString * pictureUrl = ([parsedData[@"profile_picture"] isKindOfClass:[NSString class]] ? parsedData[@"profile_picture"] : @"");
+    NSString * bio = ([parsedData[@"bio"] isKindOfClass:[NSString class]] ? parsedData[@"bio"] : @"");
+    NSString * website = ([parsedData[@"website"] isKindOfClass:[NSString class]] ? parsedData[@"website"] : @"");
+    
+    dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(concurrentQueue, ^{
+        if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] != NotReachable) {
+            [[RHNetworkActivityHandler sharedInstance] startNetworkTask];
+            NSData *data = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:pictureUrl]];
+            [[RHNetworkActivityHandler sharedInstance] endNetworkTask];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIImage * picture = [UIImage imageWithData:data];
+                self.user = [[RHUser alloc] initWithUserName:userName fullName:fullName webSite:website bio:bio andPicture:picture];
+            });
+        }
+    });
 }
 
 - (NSArray *)dataArrayFromData:(NSData *)data {
@@ -121,6 +169,18 @@
         return nil;
     }
     if (![parsed isKindOfClass:[NSDictionary class]] || ![parsed[@"data"] isKindOfClass:[NSArray class]])
+        return [self hadErrorParsing];
+    return parsed[@"data"];
+}
+
+- (NSDictionary *)dataDictionaryFromData:(NSData *)data {
+    NSError * error = nil;
+    id parsed = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+    if (error) {
+        self.error = error;
+        return nil;
+    }
+    if (![parsed isKindOfClass:[NSDictionary class]] || ![parsed[@"data"] isKindOfClass:[NSDictionary class]])
         return [self hadErrorParsing];
     return parsed[@"data"];
 }

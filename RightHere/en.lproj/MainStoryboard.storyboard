@@ -88,7 +88,7 @@
                                         <connections>
                                             <outlet property="description" destination="rwp-ID-b1t" id="hM2-ZE-8zL"/>
                                             <outlet property="picture" destination="TT0-uv-2VE" id="vSt-DY-pEp"/>
-                                            <segue destination="scM-f2-KQq" kind="push" id="cOE-4R-vhw"/>
+                                            <segue destination="scM-f2-KQq" kind="push" identifier="UserViewController" id="cOE-4R-vhw"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -136,10 +136,10 @@
             </objects>
             <point key="canvasLocation" x="112" y="-192"/>
         </scene>
-        <!--View Controller - User's information-->
+        <!--User View Controller - User's information-->
         <scene sceneID="mIk-yc-tGN">
             <objects>
-                <viewController id="scM-f2-KQq" sceneMemberID="viewController">
+                <viewController id="scM-f2-KQq" customClass="RHUserViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hn4-1e-AbB">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -150,7 +150,7 @@
                                     <constraint firstAttribute="width" constant="112" id="lvA-ZV-Zli"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DGV-QH-456">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DGV-QH-456">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="sCU-3z-y39"/>
                                 </constraints>
@@ -160,11 +160,10 @@
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3zJ-TN-w2j">
                                 <color key="backgroundColor" red="0.3131975446428571" green="0.3131975446428571" blue="0.3131975446428571" alpha="1" colorSpace="calibratedRGB"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Full name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PDA-6K-PGE">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PDA-6K-PGE">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="NsA-zT-O8N"/>
                                 </constraints>
@@ -172,24 +171,17 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xej-LW-iHC">
+                            <button hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xej-LW-iHC">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="J9t-FN-6eE"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Website">
-                                            <attributes>
-                                                <color key="NSColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                <font key="NSFont" size="15" name="Helvetica"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
+                                    <color key="titleColor" red="0.41457403659999997" green="0.5060379518" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="4BF-fN-nff" kind="push" id="VJm-hg-jgl"/>
+                                    <action selector="touchedWebsite:" destination="scM-f2-KQq" eventType="touchUpInside" id="Ttc-KC-3Dt"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -213,70 +205,22 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="User's information" id="ma8-Lz-pFz"/>
+                    <connections>
+                        <outlet property="bio" destination="3zJ-TN-w2j" id="Mkw-PI-Q6G"/>
+                        <outlet property="fullName" destination="PDA-6K-PGE" id="CJQ-Op-1BK"/>
+                        <outlet property="picture" destination="oeY-hu-5Wr" id="pme-2V-Mm3"/>
+                        <outlet property="userName" destination="DGV-QH-456" id="GdJ-b5-bgi"/>
+                        <outlet property="webSite" destination="xej-LW-iHC" id="Xkf-ay-vFB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X2L-pu-7KH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="558" y="-192"/>
         </scene>
-        <!--View Controller - User's website-->
-        <scene sceneID="L8I-Vo-Bkv">
-            <objects>
-                <viewController id="4BF-fN-nff" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="YYI-ob-L2j">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8yi-JZ-c7q">
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </webView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="8yi-JZ-c7q" firstAttribute="leading" secondItem="YYI-ob-L2j" secondAttribute="leading" type="default" id="2XZ-dn-b86"/>
-                            <constraint firstItem="8yi-JZ-c7q" firstAttribute="trailing" secondItem="YYI-ob-L2j" secondAttribute="trailing" type="default" id="Pih-M9-zK6"/>
-                            <constraint firstItem="8yi-JZ-c7q" firstAttribute="top" secondItem="YYI-ob-L2j" secondAttribute="top" type="default" id="e3a-u6-5d2"/>
-                            <constraint firstItem="8yi-JZ-c7q" firstAttribute="bottom" secondItem="YYI-ob-L2j" secondAttribute="bottom" type="default" id="og4-Qm-mz4"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="User's website" id="Kvi-Oh-7PL"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mC0-er-Oyq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1026" y="-192"/>
-        </scene>
     </scenes>
     <resources>
         <image name="Default-568h@2x.png" width="640" height="1136"/>
     </resources>
-    <classes>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="RHCollectionViewCell" superclassName="UICollectionViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RHCollectionViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="description" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="picture" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="RHViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RHViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="centerLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="collectionView" candidateClass="UICollectionView"/>
-                <relationship kind="outlet" name="topLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="UICollectionReusableView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
-        </class>
-        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
-        </class>
-        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
