@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+#import "RHUserViewController.h"
 #import "RHUser.h"
 
-#import "RHUserViewController.h"
-@interface RHInstagram : NSObject
+@interface RHInstagramController : NSObject
 
 @property (strong, nonatomic) NSArray * posts;
 @property (strong, nonatomic) NSError * error;

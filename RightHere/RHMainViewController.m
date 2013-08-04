@@ -9,26 +9,26 @@
 #import "UIImageView+UIActivityIndicatorForSDWebImage.h"
 #import "Reachability.h"
 
-#import "RHViewController.h"
+#import "RHMainViewController.h"
 
 #import "RHNetworkActivityHandler.h"
 #import "RHUserViewController.h"
 #import "RHCollectionViewCell.h"
 #import "RHFoursquareController.h"
-#import "RHInstagram.h"
+#import "RHInstagramController.h"
 #import "RHPlace.h"
 #import "RHPost.h"
 
-@interface RHViewController ()
+@interface RHMainViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel * topLabel;
 @property (weak, nonatomic) IBOutlet UILabel *centerLabel;
 
 @property (strong, nonatomic) NSArray * places;
-@property (strong, nonatomic) RHFoursquareController * foursquareSearcher;
+@property (strong, nonatomic) RHFoursquareController * fqController;
 
 @property (strong, nonatomic) NSArray * posts;
-@property (strong, nonatomic) RHInstagram * instagramSearcher;
+@property (strong, nonatomic) RHInstagramController * igController;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @property (strong, nonatomic) NSTimer * timer;
@@ -39,7 +39,7 @@
 /*----------------------------------------------------------------------------*/
 #pragma mark - Implementation
 /*----------------------------------------------------------------------------*/
-@implementation RHViewController
+@implementation RHMainViewController
 
 
 /*----------------------------------------------------------------------------*/
@@ -47,13 +47,13 @@
 /*----------------------------------------------------------------------------*/
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
-        _foursquareSearcher = [[RHFoursquareController alloc] init];
-        [_foursquareSearcher addObserver:self forKeyPath:@"places" options:NSKeyValueObservingOptionNew context:nil];
-        [_foursquareSearcher addObserver:self forKeyPath:@"error" options:NSKeyValueObservingOptionNew context:nil];
+        _fqController = [[RHFoursquareController alloc] init];
+        [_fqController addObserver:self forKeyPath:@"places" options:NSKeyValueObservingOptionNew context:nil];
+        [_fqController addObserver:self forKeyPath:@"error" options:NSKeyValueObservingOptionNew context:nil];
         
-        _instagramSearcher = [[RHInstagram alloc] init];
-        [_instagramSearcher addObserver:self forKeyPath:@"posts" options:NSKeyValueObservingOptionNew context:nil];
-        [_instagramSearcher addObserver:self forKeyPath:@"error" options:NSKeyValueObservingOptionNew context:nil];
+        _igController = [[RHInstagramController alloc] init];
+        [_igController addObserver:self forKeyPath:@"posts" options:NSKeyValueObservingOptionNew context:nil];
+        [_igController addObserver:self forKeyPath:@"error" options:NSKeyValueObservingOptionNew context:nil];
     }
     return self;
 }
@@ -98,7 +98,7 @@
     [_topLabel setHidden:NO];
     [[self searchDisplayController] setActive:NO animated:YES];
     
-    [_instagramSearcher getMediasFromPlaceId:[place foursquareUID]];
+    [_igController getMediasFromPlaceId:[place foursquareUID]];
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
@@ -115,20 +115,19 @@
 #pragma mark - Observer
 /*----------------------------------------------------------------------------*/
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if ([keyPath isEqualToString:@"error"]) {
-        NSError * error = [object valueForKeyPath:keyPath];
+    id property = [object valueForKeyPath:keyPath];
+    if ([property isKindOfClass:[NSError class]]) {
+        NSError * error = property;
         UIAlertView * av = [[UIAlertView alloc] initWithTitle:[error domain]
-                                                      message:[error userInfo][@"desc"]
+                                                      message:@"Something went wrong. Please try again later"
                                                      delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [av show];
-    } else if (object == _foursquareSearcher) {
+    } else if ([property isKindOfClass:[NSArray class]] || !property) {
         if ([keyPath isEqualToString:@"places"]) {
-            _places = [_foursquareSearcher places];
+            _places = property;
             [[[self searchDisplayController] searchResultsTableView] reloadData];
-        }
-    } else if (object == _instagramSearcher) {
-        if ([keyPath isEqualToString:@"posts"]) {
-            _posts = [_instagramSearcher posts];
+        } else if ([keyPath isEqualToString:@"posts"]) {
+            _posts = property;
             [_collectionView reloadData];
             if (!_posts || ![_posts count]) {
                 [_centerLabel setText:@"Oops... Couldn't find any pictures !"];
@@ -181,8 +180,8 @@
         NSUInteger index = [path row];
         RHPost * post = [_posts objectAtIndex:index];
         RHUserViewController * vc = [segue destinationViewController];
-        [_instagramSearcher setUserViewController:vc];
-        [_instagramSearcher searchForUserWithId:[post userId]];
+        [_igController setUserViewController:vc];
+        [_igController searchForUserWithId:[post userId]];
     }
 }
 
@@ -190,7 +189,7 @@
 #pragma mark - Misc private methods
 /*----------------------------------------------------------------------------*/
 - (void)getPlacesNow {
-    [_foursquareSearcher getPlacesWithName:[[[self searchDisplayController] searchBar] text]];
+    [_fqController getPlacesWithName:[[[self searchDisplayController] searchBar] text]];
 }
 
 @end

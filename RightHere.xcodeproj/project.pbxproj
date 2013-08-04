@@ -24,7 +24,7 @@
 		9C8786A517ABA960009C0EBC /* RHFoursquareClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8786A417ABA960009C0EBC /* RHFoursquareClient.m */; };
 		9C8786A917ABE3C6009C0EBC /* RHCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8786A817ABE3C6009C0EBC /* RHCollectionViewCell.m */; };
 		9C8786AD17ABF076009C0EBC /* RHInstagramClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8786AC17ABF076009C0EBC /* RHInstagramClient.m */; };
-		9C8786B117ABF5FE009C0EBC /* RHInstagram.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8786B017ABF5FE009C0EBC /* RHInstagram.m */; };
+		9C8786B117ABF5FE009C0EBC /* RHInstagramController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8786B017ABF5FE009C0EBC /* RHInstagramController.m */; };
 		9C8786B417AC9DA5009C0EBC /* RHPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8786B317AC9DA5009C0EBC /* RHPost.m */; };
 		9C8786B817ACBF90009C0EBC /* RHNetworkActivityHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8786B717ACBF90009C0EBC /* RHNetworkActivityHandler.m */; };
 		9C8786C017ACDA67009C0EBC /* RHUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8786BF17ACDA67009C0EBC /* RHUserViewController.m */; };
@@ -60,12 +60,14 @@
 		9CD73B6617AB58C10058D39F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD73B6517AB58C10058D39F /* main.m */; };
 		9CD73B6A17AB58C10058D39F /* RHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD73B6917AB58C10058D39F /* RHAppDelegate.m */; };
 		9CD73B7317AB58C10058D39F /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CD73B7117AB58C10058D39F /* MainStoryboard.storyboard */; };
-		9CD73B7617AB58C10058D39F /* RHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD73B7517AB58C10058D39F /* RHViewController.m */; };
+		9CD73B7617AB58C10058D39F /* RHMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD73B7517AB58C10058D39F /* RHMainViewController.m */; };
 		9CD73B8417AB68810058D39F /* RHPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD73B8317AB68810058D39F /* RHPlace.m */; };
 		9CD73B9217AB6D800058D39F /* RHFoursquareController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD73B9117AB6D800058D39F /* RHFoursquareController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9C0A919917AE048C00BD3CA9 /* FoursquareAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoursquareAPI.h; sourceTree = "<group>"; };
+		9C0A919A17AE048C00BD3CA9 /* InstagramAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramAPI.h; sourceTree = "<group>"; };
 		9C87867A17AB8F71009C0EBC /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		9C87867B17AB8F71009C0EBC /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		9C87867C17AB8F71009C0EBC /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -96,9 +98,8 @@
 		9C8786A817ABE3C6009C0EBC /* RHCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHCollectionViewCell.m; sourceTree = "<group>"; };
 		9C8786AB17ABF076009C0EBC /* RHInstagramClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHInstagramClient.h; sourceTree = "<group>"; };
 		9C8786AC17ABF076009C0EBC /* RHInstagramClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHInstagramClient.m; sourceTree = "<group>"; };
-		9C8786AE17ABF4E8009C0EBC /* InstagramAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramAPI.h; sourceTree = "<group>"; };
-		9C8786AF17ABF5FE009C0EBC /* RHInstagram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHInstagram.h; sourceTree = "<group>"; };
-		9C8786B017ABF5FE009C0EBC /* RHInstagram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHInstagram.m; sourceTree = "<group>"; };
+		9C8786AF17ABF5FE009C0EBC /* RHInstagramController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHInstagramController.h; sourceTree = "<group>"; };
+		9C8786B017ABF5FE009C0EBC /* RHInstagramController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHInstagramController.m; sourceTree = "<group>"; };
 		9C8786B217AC9DA5009C0EBC /* RHPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHPost.h; sourceTree = "<group>"; };
 		9C8786B317AC9DA5009C0EBC /* RHPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHPost.m; sourceTree = "<group>"; };
 		9C8786B617ACBF90009C0EBC /* RHNetworkActivityHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHNetworkActivityHandler.h; sourceTree = "<group>"; };
@@ -159,13 +160,12 @@
 		9CD73B6817AB58C10058D39F /* RHAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RHAppDelegate.h; sourceTree = "<group>"; };
 		9CD73B6917AB58C10058D39F /* RHAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RHAppDelegate.m; sourceTree = "<group>"; };
 		9CD73B7217AB58C10058D39F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		9CD73B7417AB58C10058D39F /* RHViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RHViewController.h; sourceTree = "<group>"; };
-		9CD73B7517AB58C10058D39F /* RHViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RHViewController.m; sourceTree = "<group>"; };
+		9CD73B7417AB58C10058D39F /* RHMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RHMainViewController.h; sourceTree = "<group>"; };
+		9CD73B7517AB58C10058D39F /* RHMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RHMainViewController.m; sourceTree = "<group>"; };
 		9CD73B8217AB68810058D39F /* RHPlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHPlace.h; sourceTree = "<group>"; };
 		9CD73B8317AB68810058D39F /* RHPlace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHPlace.m; sourceTree = "<group>"; };
 		9CD73B9017AB6D800058D39F /* RHFoursquareController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHFoursquareController.h; sourceTree = "<group>"; };
 		9CD73B9117AB6D800058D39F /* RHFoursquareController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHFoursquareController.m; sourceTree = "<group>"; };
-		9CD73B9317AB70720058D39F /* FoursquareAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoursquareAPI.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,15 +227,15 @@
 		9C8786AA17ABEFF4009C0EBC /* Instagram */ = {
 			isa = PBXGroup;
 			children = (
-				9C8786AE17ABF4E8009C0EBC /* InstagramAPI.h */,
+				9C0A919A17AE048C00BD3CA9 /* InstagramAPI.h */,
+				9C8786AB17ABF076009C0EBC /* RHInstagramClient.h */,
+				9C8786AC17ABF076009C0EBC /* RHInstagramClient.m */,
 				9C8786B217AC9DA5009C0EBC /* RHPost.h */,
 				9C8786B317AC9DA5009C0EBC /* RHPost.m */,
 				9C8786C117ACDAB7009C0EBC /* RHUser.h */,
 				9C8786C217ACDAB7009C0EBC /* RHUser.m */,
-				9C8786AF17ABF5FE009C0EBC /* RHInstagram.h */,
-				9C8786B017ABF5FE009C0EBC /* RHInstagram.m */,
-				9C8786AB17ABF076009C0EBC /* RHInstagramClient.h */,
-				9C8786AC17ABF076009C0EBC /* RHInstagramClient.m */,
+				9C8786AF17ABF5FE009C0EBC /* RHInstagramController.h */,
+				9C8786B017ABF5FE009C0EBC /* RHInstagramController.m */,
 			);
 			name = Instagram;
 			sourceTree = "<group>";
@@ -370,8 +370,8 @@
 		9CD73B8817AB6BAF0058D39F /* Main view */ = {
 			isa = PBXGroup;
 			children = (
-				9CD73B7417AB58C10058D39F /* RHViewController.h */,
-				9CD73B7517AB58C10058D39F /* RHViewController.m */,
+				9CD73B7417AB58C10058D39F /* RHMainViewController.h */,
+				9CD73B7517AB58C10058D39F /* RHMainViewController.m */,
 			);
 			name = "Main view";
 			sourceTree = "<group>";
@@ -436,13 +436,13 @@
 		9CD73B8F17AB6D390058D39F /* Foursquare */ = {
 			isa = PBXGroup;
 			children = (
-				9CD73B9317AB70720058D39F /* FoursquareAPI.h */,
+				9C0A919917AE048C00BD3CA9 /* FoursquareAPI.h */,
+				9C8786A317ABA960009C0EBC /* RHFoursquareClient.h */,
+				9C8786A417ABA960009C0EBC /* RHFoursquareClient.m */,
 				9CD73B8217AB68810058D39F /* RHPlace.h */,
 				9CD73B8317AB68810058D39F /* RHPlace.m */,
 				9CD73B9017AB6D800058D39F /* RHFoursquareController.h */,
 				9CD73B9117AB6D800058D39F /* RHFoursquareController.m */,
-				9C8786A317ABA960009C0EBC /* RHFoursquareClient.h */,
-				9C8786A417ABA960009C0EBC /* RHFoursquareClient.m */,
 			);
 			name = Foursquare;
 			sourceTree = "<group>";
@@ -519,7 +519,7 @@
 			files = (
 				9CD73B6617AB58C10058D39F /* main.m in Sources */,
 				9CD73B6A17AB58C10058D39F /* RHAppDelegate.m in Sources */,
-				9CD73B7617AB58C10058D39F /* RHViewController.m in Sources */,
+				9CD73B7617AB58C10058D39F /* RHMainViewController.m in Sources */,
 				9CD73B8417AB68810058D39F /* RHPlace.m in Sources */,
 				9CD73B9217AB6D800058D39F /* RHFoursquareController.m in Sources */,
 				9C87868D17AB8F71009C0EBC /* AFHTTPClient.m in Sources */,
@@ -534,7 +534,7 @@
 				9C8786A517ABA960009C0EBC /* RHFoursquareClient.m in Sources */,
 				9C8786A917ABE3C6009C0EBC /* RHCollectionViewCell.m in Sources */,
 				9C8786AD17ABF076009C0EBC /* RHInstagramClient.m in Sources */,
-				9C8786B117ABF5FE009C0EBC /* RHInstagram.m in Sources */,
+				9C8786B117ABF5FE009C0EBC /* RHInstagramController.m in Sources */,
 				9C8786B417AC9DA5009C0EBC /* RHPost.m in Sources */,
 				9C8786B817ACBF90009C0EBC /* RHNetworkActivityHandler.m in Sources */,
 				9C8786C017ACDA67009C0EBC /* RHUserViewController.m in Sources */,

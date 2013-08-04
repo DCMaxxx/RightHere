@@ -9,13 +9,13 @@
 #import "AFHTTPRequestOperation.h"
 #import "Reachability.h"
 
-#import "RHInstagram.h"
+#import "RHInstagramController.h"
 
 #import "RHNetworkActivityHandler.h"
 #import "RHInstagramClient.h"
 #import "RHPost.h"
 
-@interface RHInstagram ()
+@interface RHInstagramController ()
 
 @property (strong, nonatomic) RHInstagramClient * client;
 
@@ -25,7 +25,7 @@
 /*----------------------------------------------------------------------------*/
 #pragma mark - Implemenattation
 /*----------------------------------------------------------------------------*/
-@implementation RHInstagram
+@implementation RHInstagramController
 
 
 /*----------------------------------------------------------------------------*/
@@ -48,8 +48,10 @@
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         [[RHNetworkActivityHandler sharedInstance] endNetworkTask];
         NSString * placeId = [self parseForId:responseObject];
-        if (!placeId)
+        if (!placeId) {
+            self.posts = nil;
             return ;
+        }
         NSString * path = [NSString stringWithFormat:@"locations/%@/media/recent", placeId];
         NSMutableURLRequest * secondRequest = [_client requestWithMethod:@"GET" path:path parameters:@{@"authentication": @(YES)}];
         AFHTTPRequestOperation * secondOperation = [[AFHTTPRequestOperation alloc] initWithRequest:secondRequest];
@@ -100,7 +102,7 @@
     if (!parsedData)
         return nil;
     if (![parsedData count] || ![parsedData[0] isKindOfClass:[NSDictionary class]])
-        return [self hadErrorParsing];
+        return nil;
     return parsedData[0][@"id"];
 }
 
@@ -173,7 +175,7 @@
         return nil;
     }
     if (![parsed isKindOfClass:[NSDictionary class]] || ![parsed[@"data"] isKindOfClass:[NSArray class]])
-        return [self hadErrorParsing];
+        nil;
     return parsed[@"data"];
 }
 
@@ -185,13 +187,8 @@
         return nil;
     }
     if (![parsed isKindOfClass:[NSDictionary class]] || ![parsed[@"data"] isKindOfClass:[NSDictionary class]])
-        return [self hadErrorParsing];
+        nil;
     return parsed[@"data"];
-}
-
-- (id)hadErrorParsing {
-    self.error = [NSError errorWithDomain:@"Instagram" code:42 userInfo:@{@"desc": @"Unable to parse Instagram's response"}];
-    return nil;
 }
 
 @end
