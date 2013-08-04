@@ -173,6 +173,17 @@
 /*----------------------------------------------------------------------------*/
 #pragma mark - Passing to other ViewControllers
 /*----------------------------------------------------------------------------*/
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    if ([identifier isEqualToString:@"UserViewController"]) {
+        NSArray * selectedCells = [[self collectionView] indexPathsForSelectedItems];
+        NSIndexPath * path = [selectedCells objectAtIndex:0];
+        NSUInteger index = [path row];
+        RHPost * post = [_posts objectAtIndex:index];
+        return [post userId] && [[post userId] length];
+    }
+    return YES;
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"UserViewController"]) {
         NSArray * selectedCells = [[self collectionView] indexPathsForSelectedItems];

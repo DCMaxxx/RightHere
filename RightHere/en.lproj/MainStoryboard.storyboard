@@ -64,7 +64,7 @@
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="281" translatesAutoresizingMaskIntoConstraints="NO" id="rwp-ID-b1t">
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="41" id="ioo-ni-7cU"/>
+                                                        <constraint firstAttribute="height" constant="36" id="SVb-UX-E28"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -72,20 +72,20 @@
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TT0-uv-2VE">
                                                     <constraints>
+                                                        <constraint firstAttribute="height" constant="251" id="PrT-Jc-DKo"/>
                                                         <constraint firstAttribute="width" constant="251" id="tgG-Kj-Gda"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="TT0-uv-2VE" firstAttribute="centerX" secondItem="rwp-ID-b1t" secondAttribute="centerX" type="default" id="0Cq-4j-7ig"/>
-                                            <constraint firstItem="TT0-uv-2VE" firstAttribute="centerX" secondItem="NfQ-FS-YNv" secondAttribute="centerX" type="default" id="Arr-fg-70U"/>
-                                            <constraint firstItem="rwp-ID-b1t" firstAttribute="top" secondItem="TT0-uv-2VE" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="BZq-qf-d2H"/>
-                                            <constraint firstItem="rwp-ID-b1t" firstAttribute="bottom" secondItem="NfQ-FS-YNv" secondAttribute="bottom" type="default" id="EOc-Wh-73A"/>
-                                            <constraint firstItem="rwp-ID-b1t" firstAttribute="leading" secondItem="NfQ-FS-YNv" secondAttribute="leading" constant="20" type="default" id="UAv-dy-ZlI"/>
-                                            <constraint firstItem="TT0-uv-2VE" firstAttribute="top" secondItem="NfQ-FS-YNv" secondAttribute="top" type="default" id="yN9-vF-gJR"/>
+                                            <constraint firstAttribute="trailing" secondItem="rwp-ID-b1t" secondAttribute="trailing" constant="20" type="default" id="0T1-4e-7ro"/>
+                                            <constraint firstItem="rwp-ID-b1t" firstAttribute="leading" secondItem="NfQ-FS-YNv" secondAttribute="leading" constant="20" type="default" id="DF1-ka-CWf"/>
+                                            <constraint firstItem="rwp-ID-b1t" firstAttribute="bottom" secondItem="NfQ-FS-YNv" secondAttribute="bottom" type="default" id="gTL-7U-ZP9"/>
+                                            <constraint firstItem="TT0-uv-2VE" firstAttribute="top" secondItem="NfQ-FS-YNv" secondAttribute="top" constant="13" id="zQ4-1r-9Va"/>
                                         </constraints>
                                         <size key="customSize" width="321" height="300"/>
                                         <connections>
@@ -230,6 +230,14 @@
             <relationships>
                 <relationship kind="outlet" name="description" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="picture" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="RHMainViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RHMainViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="centerLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="collectionView" candidateClass="UICollectionView"/>
+                <relationship kind="outlet" name="topLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="RHUserViewController" superclassName="UIViewController">
