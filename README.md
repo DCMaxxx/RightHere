@@ -17,7 +17,7 @@ The subject was :
 
 Project
 ---------
-So I came up with this idea (clearly based on [Worldc.am](http://worldc.am/)) :
+So I came up with this idea (clearly inspired by [Worldc.am](http://worldc.am/)) :
 You just go in the application, search for places around you (using Foursquare's database), and once you picked one up, it searches for public Instragram pictures taken there.
 
 That's it.

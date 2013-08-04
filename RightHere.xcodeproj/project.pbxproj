@@ -62,7 +62,7 @@
 		9CD73B7317AB58C10058D39F /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CD73B7117AB58C10058D39F /* MainStoryboard.storyboard */; };
 		9CD73B7617AB58C10058D39F /* RHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD73B7517AB58C10058D39F /* RHViewController.m */; };
 		9CD73B8417AB68810058D39F /* RHPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD73B8317AB68810058D39F /* RHPlace.m */; };
-		9CD73B9217AB6D800058D39F /* RHFoursquare.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD73B9117AB6D800058D39F /* RHFoursquare.m */; };
+		9CD73B9217AB6D800058D39F /* RHFoursquareController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD73B9117AB6D800058D39F /* RHFoursquareController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -163,8 +163,8 @@
 		9CD73B7517AB58C10058D39F /* RHViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RHViewController.m; sourceTree = "<group>"; };
 		9CD73B8217AB68810058D39F /* RHPlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHPlace.h; sourceTree = "<group>"; };
 		9CD73B8317AB68810058D39F /* RHPlace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHPlace.m; sourceTree = "<group>"; };
-		9CD73B9017AB6D800058D39F /* RHFoursquare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHFoursquare.h; sourceTree = "<group>"; };
-		9CD73B9117AB6D800058D39F /* RHFoursquare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHFoursquare.m; sourceTree = "<group>"; };
+		9CD73B9017AB6D800058D39F /* RHFoursquareController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHFoursquareController.h; sourceTree = "<group>"; };
+		9CD73B9117AB6D800058D39F /* RHFoursquareController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHFoursquareController.m; sourceTree = "<group>"; };
 		9CD73B9317AB70720058D39F /* FoursquareAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoursquareAPI.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -439,8 +439,8 @@
 				9CD73B9317AB70720058D39F /* FoursquareAPI.h */,
 				9CD73B8217AB68810058D39F /* RHPlace.h */,
 				9CD73B8317AB68810058D39F /* RHPlace.m */,
-				9CD73B9017AB6D800058D39F /* RHFoursquare.h */,
-				9CD73B9117AB6D800058D39F /* RHFoursquare.m */,
+				9CD73B9017AB6D800058D39F /* RHFoursquareController.h */,
+				9CD73B9117AB6D800058D39F /* RHFoursquareController.m */,
 				9C8786A317ABA960009C0EBC /* RHFoursquareClient.h */,
 				9C8786A417ABA960009C0EBC /* RHFoursquareClient.m */,
 			);
@@ -521,7 +521,7 @@
 				9CD73B6A17AB58C10058D39F /* RHAppDelegate.m in Sources */,
 				9CD73B7617AB58C10058D39F /* RHViewController.m in Sources */,
 				9CD73B8417AB68810058D39F /* RHPlace.m in Sources */,
-				9CD73B9217AB6D800058D39F /* RHFoursquare.m in Sources */,
+				9CD73B9217AB6D800058D39F /* RHFoursquareController.m in Sources */,
 				9C87868D17AB8F71009C0EBC /* AFHTTPClient.m in Sources */,
 				9C87868E17AB8F71009C0EBC /* AFHTTPRequestOperation.m in Sources */,
 				9C87868F17AB8F71009C0EBC /* AFImageRequestOperation.m in Sources */,

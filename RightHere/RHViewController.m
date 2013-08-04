@@ -14,7 +14,7 @@
 #import "RHNetworkActivityHandler.h"
 #import "RHUserViewController.h"
 #import "RHCollectionViewCell.h"
-#import "RHFoursquare.h"
+#import "RHFoursquareController.h"
 #import "RHInstagram.h"
 #import "RHPlace.h"
 #import "RHPost.h"
@@ -25,7 +25,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *centerLabel;
 
 @property (strong, nonatomic) NSArray * places;
-@property (strong, nonatomic) RHFoursquare * foursquareSearcher;
+@property (strong, nonatomic) RHFoursquareController * foursquareSearcher;
 
 @property (strong, nonatomic) NSArray * posts;
 @property (strong, nonatomic) RHInstagram * instagramSearcher;
@@ -47,7 +47,7 @@
 /*----------------------------------------------------------------------------*/
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
-        _foursquareSearcher = [[RHFoursquare alloc] init];
+        _foursquareSearcher = [[RHFoursquareController alloc] init];
         [_foursquareSearcher addObserver:self forKeyPath:@"places" options:NSKeyValueObservingOptionNew context:nil];
         [_foursquareSearcher addObserver:self forKeyPath:@"error" options:NSKeyValueObservingOptionNew context:nil];
         

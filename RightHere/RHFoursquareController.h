@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface RHFoursquare : NSObject
+@interface RHFoursquareController : NSObject
 
 @property (strong, nonatomic) NSArray * places;
 @property (strong, nonatomic) NSError * error;
