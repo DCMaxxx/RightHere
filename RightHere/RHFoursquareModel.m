@@ -10,7 +10,7 @@
 #import "AFHTTPRequestOperation.h"
 #import "Reachability.h"
 
-#import "RHFoursquareController.h"
+#import "RHFoursquareModel.h"
 
 #import "RHNetworkActivityHandler.h"
 #import "RHFoursquareClient.h"
@@ -18,7 +18,7 @@
 
 typedef enum { eNearby, eNameSearch } eRequestKind;
 
-@interface RHFoursquareController ()
+@interface RHFoursquareModel ()
 
 @property (strong, nonatomic) CLLocationManager * locationManager;
 @property (strong, nonatomic) RHFoursquareClient * client;
@@ -29,7 +29,7 @@ typedef enum { eNearby, eNameSearch } eRequestKind;
 /*----------------------------------------------------------------------------*/
 #pragma mark - Implementation
 /*----------------------------------------------------------------------------*/
-@implementation RHFoursquareController
+@implementation RHFoursquareModel
 
 
 /*----------------------------------------------------------------------------*/

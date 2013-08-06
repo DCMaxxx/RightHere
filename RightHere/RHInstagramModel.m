@@ -9,13 +9,13 @@
 #import "AFHTTPRequestOperation.h"
 #import "Reachability.h"
 
-#import "RHInstagramController.h"
+#import "RHInstagramModel.h"
 
 #import "RHNetworkActivityHandler.h"
 #import "RHInstagramClient.h"
 #import "RHPost.h"
 
-@interface RHInstagramController ()
+@interface RHInstagramModel ()
 
 @property (strong, nonatomic) RHInstagramClient * client;
 
@@ -25,7 +25,7 @@
 /*----------------------------------------------------------------------------*/
 #pragma mark - Implemenattation
 /*----------------------------------------------------------------------------*/
-@implementation RHInstagramController
+@implementation RHInstagramModel
 
 
 /*----------------------------------------------------------------------------*/

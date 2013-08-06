@@ -14,8 +14,8 @@
 #import "RHNetworkActivityHandler.h"
 #import "RHUserViewController.h"
 #import "RHCollectionViewCell.h"
-#import "RHFoursquareController.h"
-#import "RHInstagramController.h"
+#import "RHFoursquareModel.h"
+#import "RHInstagramModel.h"
 #import "RHPlace.h"
 #import "RHPost.h"
 
@@ -25,10 +25,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *centerLabel;
 
 @property (strong, nonatomic) NSArray * places;
-@property (strong, nonatomic) RHFoursquareController * fqController;
+@property (strong, nonatomic) RHFoursquareModel * fqController;
 
 @property (strong, nonatomic) NSArray * posts;
-@property (strong, nonatomic) RHInstagramController * igController;
+@property (strong, nonatomic) RHInstagramModel * igController;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @property (strong, nonatomic) NSTimer * timer;
@@ -47,11 +47,11 @@
 /*----------------------------------------------------------------------------*/
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
-        _fqController = [[RHFoursquareController alloc] init];
+        _fqController = [[RHFoursquareModel alloc] init];
         [_fqController addObserver:self forKeyPath:@"places" options:NSKeyValueObservingOptionNew context:nil];
         [_fqController addObserver:self forKeyPath:@"error" options:NSKeyValueObservingOptionNew context:nil];
         
-        _igController = [[RHInstagramController alloc] init];
+        _igController = [[RHInstagramModel alloc] init];
         [_igController addObserver:self forKeyPath:@"posts" options:NSKeyValueObservingOptionNew context:nil];
         [_igController addObserver:self forKeyPath:@"error" options:NSKeyValueObservingOptionNew context:nil];
     }

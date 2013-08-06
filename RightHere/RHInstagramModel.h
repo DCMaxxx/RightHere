@@ -11,7 +11,7 @@
 #import "RHUserViewController.h"
 #import "RHUser.h"
 
-@interface RHInstagramController : NSObject
+@interface RHInstagramModel : NSObject
 
 @property (strong, nonatomic) NSArray * posts;
 @property (strong, nonatomic) NSError * error;
