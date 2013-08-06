@@ -33,6 +33,8 @@
 
 @property (strong, nonatomic) NSTimer * timer;
 
+@property (strong, nonatomic) UIRefreshControl * refreshControl;
+
 @end
 
 
@@ -57,6 +59,7 @@
     }
     return self;
 }
+
 
 
 /*----------------------------------------------------------------------------*/
@@ -110,6 +113,17 @@
     _timer = [NSTimer scheduledTimerWithTimeInterval:0.3f target:self selector:@selector(getPlacesNow) userInfo:nil repeats:NO];
 }
 
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    _refreshControl = [[UIRefreshControl alloc] init];
+    [_refreshControl addTarget:self action:@selector(refreshSearchDisplayController) forControlEvents:UIControlEventValueChanged];
+    [[[self searchDisplayController] searchResultsTableView] addSubview:_refreshControl];
+}
+
+-(void)refreshSearchDisplayController {
+    [self getPlacesNow];
+}
+
+
 
 /*----------------------------------------------------------------------------*/
 #pragma mark - Observer
@@ -124,6 +138,8 @@
         [av show];
     } else if ([property isKindOfClass:[NSArray class]] || !property) {
         if ([keyPath isEqualToString:@"places"]) {
+            if (_refreshControl && [_refreshControl isRefreshing])
+                [_refreshControl endRefreshing];
             _places = property;
             [[[self searchDisplayController] searchResultsTableView] reloadData];
         } else if ([keyPath isEqualToString:@"posts"]) {
