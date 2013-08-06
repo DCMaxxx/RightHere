@@ -14,10 +14,10 @@
 @property (strong, nonatomic, readonly) NSString * fullName;
 @property (strong, nonatomic, readonly) NSString * website;
 @property (strong, nonatomic, readonly) NSString * bio;
-@property (strong, nonatomic, readonly) UIImage * picture;
+@property (strong, nonatomic, readonly) NSURL * pictureURL;
 
 - (id)initWithUserName:(NSString *)username fullName:(NSString *)fullName
-               webSite:(NSString *)website bio:(NSString *)bio andPicture:(UIImage *)picture;
+               webSite:(NSString *)website bio:(NSString *)bio andPictureURL:(NSURL *)pictureURL;
 
 
 @end

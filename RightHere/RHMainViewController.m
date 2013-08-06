@@ -6,12 +6,11 @@
 //  Copyright (c) 2013 Maxime de Chalendar. All rights reserved.
 //
 
-#import "UIImageView+UIActivityIndicatorForSDWebImage.h"
+#import "UIImageView+AFNetworking.h"
 #import "Reachability.h"
 
 #import "RHMainViewController.h"
 
-#import "RHNetworkActivityHandler.h"
 #import "RHUserViewController.h"
 #import "RHCollectionViewCell.h"
 #import "RHFoursquareModel.h"
@@ -169,19 +168,7 @@
     RHPost * post = [_posts objectAtIndex:index];
 
     [[cell description] setText:[post text]];
-
-//    dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-//    dispatch_async(concurrentQueue, ^{
-//        if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] != NotReachable) {
-//            [[RHNetworkActivityHandler sharedInstance] startNetworkTask];
-//            NSData *image = [[NSData alloc] initWithContentsOfURL:post.pictureURL];
-//            [[RHNetworkActivityHandler sharedInstance] endNetworkTask];
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                [[cell picture] setImage:[UIImage imageWithData:image]];
-//            });
-//        }
-//    });
-    [[cell picture] setImageWithURL:[post pictureURL] placeholderImage:[UIImage imageNamed:@"placeholder.png"] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    [[cell picture] setImageWithURL:[post pictureURL] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
     return cell;
 }
 
@@ -207,6 +194,7 @@
         NSUInteger index = [path row];
         RHPost * post = [_posts objectAtIndex:index];
         RHUserViewController * vc = [segue destinationViewController];
+//        [_igController addObserver:vc forKeyPath:@"user" options:NSKeyValueObservingOptionNew context:nil];
         [_igController setUserViewController:vc];
         [_igController searchForUserWithId:[post userId]];
     }

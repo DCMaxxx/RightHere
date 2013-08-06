@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Maxime de Chalendar. All rights reserved.
 //
 
+#import "UIImageView+AFNetworking.h"
 #import "RHUserViewController.h"
 
 #import "RHUser.h"
@@ -37,6 +38,10 @@
                                                      delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [av show];        
     }
+//    else if ([keyPath isEqualToString:@"user"]) {
+//        RHUser * user = [object valueForKeyPath:keyPath];
+//        [self updateUIWithUser:user];
+//    }
 }
 
 
@@ -52,7 +57,7 @@
 #pragma mark - UI Update methods
 /*----------------------------------------------------------------------------*/
 - (void)updateUIWithUser:(RHUser *)user {
-    [_picture setImage:[user picture]];
+    [_picture setImageWithURL:[user pictureURL] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
     [_userName setText:[user userName]];
     [_fullName setText:[user fullName]];
     if ([[user website] length]) {

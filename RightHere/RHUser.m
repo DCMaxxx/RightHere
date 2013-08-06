@@ -19,13 +19,13 @@
 #pragma mark - Init
 /*----------------------------------------------------------------------------*/
 - (id)initWithUserName:(NSString *)username fullName:(NSString *)fullName
-               webSite:(NSString *)website bio:(NSString *)bio andPicture:(UIImage *)picture {
+               webSite:(NSString *)website bio:(NSString *)bio andPictureURL:(NSURL *)pictureURL {
     if (self = [super init]) {
         _userName = username;
         _fullName = fullName;
         _website = website;
         _bio = bio;
-        _picture = picture;
+        _pictureURL = pictureURL;
     }
     return self;
 }

@@ -12,7 +12,6 @@
 
 #import "RHFoursquareModel.h"
 
-#import "RHNetworkActivityHandler.h"
 #import "RHFoursquareClient.h"
 #import "RHPlace.h"
 
@@ -60,14 +59,11 @@ typedef enum { eNearby, eNameSearch } eRequestKind;
     NSMutableURLRequest * request = [_client requestWithMethod:@"GET" path:@"venues/explore" parameters:@{@"ll": latLong, @"authentication": @(YES)}];
     AFHTTPRequestOperation * operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [[RHNetworkActivityHandler sharedInstance] endNetworkTask];
         [self parseResponse:responseObject forRequest:eNearby];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [[RHNetworkActivityHandler sharedInstance] endNetworkTask];
         self.error = error;
     }];
     if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] != NotReachable) {
-        [[RHNetworkActivityHandler sharedInstance] startNetworkTask];
         [operation start];
     }
 }
@@ -82,14 +78,11 @@ typedef enum { eNearby, eNameSearch } eRequestKind;
                                                                                                          @"authentication": @(YES)}];
     AFHTTPRequestOperation * operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [[RHNetworkActivityHandler sharedInstance] endNetworkTask];
         [self parseResponse:responseObject forRequest:eNameSearch];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [[RHNetworkActivityHandler sharedInstance] endNetworkTask];
         self.error = error;
     }];
     if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] != NotReachable) {
-        [[RHNetworkActivityHandler sharedInstance] startNetworkTask];
         [operation start];
     }
 }

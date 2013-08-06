@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic) NSArray * posts;
 @property (strong, nonatomic) NSError * error;
+@property (strong, nonatomic) RHUser * user;
 
 @property (weak, nonatomic) RHUserViewController * userViewController;
 

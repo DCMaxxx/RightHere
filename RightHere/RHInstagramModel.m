@@ -11,7 +11,6 @@
 
 #import "RHInstagramModel.h"
 
-#import "RHNetworkActivityHandler.h"
 #import "RHInstagramClient.h"
 #import "RHPost.h"
 
@@ -46,7 +45,6 @@
                                                                                                             @"authentication": @(YES)}];
     AFHTTPRequestOperation * operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [[RHNetworkActivityHandler sharedInstance] endNetworkTask];
         NSString * placeId = [self parseForId:responseObject];
         if (!placeId) {
             self.posts = nil;
@@ -56,22 +54,17 @@
         NSMutableURLRequest * secondRequest = [_client requestWithMethod:@"GET" path:path parameters:@{@"authentication": @(YES)}];
         AFHTTPRequestOperation * secondOperation = [[AFHTTPRequestOperation alloc] initWithRequest:secondRequest];
         [secondOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-            [[RHNetworkActivityHandler sharedInstance] endNetworkTask];
             self.posts = [self parseForPosts:responseObject];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            [[RHNetworkActivityHandler sharedInstance] endNetworkTask];
             self.error = error;
         }];
         if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] != NotReachable) {
-            [[RHNetworkActivityHandler sharedInstance] startNetworkTask];
             [secondOperation start];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [[RHNetworkActivityHandler sharedInstance] endNetworkTask];
         self.error = error;
     }];
     if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] != NotReachable) {
-        [[RHNetworkActivityHandler sharedInstance] startNetworkTask];
         [operation start];
     }
 }
@@ -81,14 +74,11 @@
     NSMutableURLRequest * request = [_client requestWithMethod:@"GET" path:path parameters:@{@"authentication": @(YES)}];
     AFHTTPRequestOperation * operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [[RHNetworkActivityHandler sharedInstance] endNetworkTask];
         [self parseForUser:responseObject];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [[RHNetworkActivityHandler sharedInstance] endNetworkTask];
         self.error = error;
     }];
      if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] != NotReachable) {
-         [[RHNetworkActivityHandler sharedInstance] startNetworkTask];
          [operation start];
      }    
 }
@@ -148,23 +138,8 @@
     NSString * pictureUrl = ([parsedData[@"profile_picture"] isKindOfClass:[NSString class]] ? parsedData[@"profile_picture"] : @"");
     NSString * bio = ([parsedData[@"bio"] isKindOfClass:[NSString class]] ? parsedData[@"bio"] : @"");
     NSString * website = ([parsedData[@"website"] isKindOfClass:[NSString class]] ? parsedData[@"website"] : @"");
-    
-    dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
-    dispatch_async(concurrentQueue, ^{
-        if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] != NotReachable) {
-            [[RHNetworkActivityHandler sharedInstance] startNetworkTask];
-            NSData *data = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:pictureUrl]];
-            [[RHNetworkActivityHandler sharedInstance] endNetworkTask];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                UIImage * picture = [UIImage imageWithData:data];
-                [_userViewController updateUIWithUser:[[RHUser alloc] initWithUserName:userName
-                                                                              fullName:fullName
-                                                                               webSite:website
-                                                                                   bio:bio
-                                                                            andPicture:picture]];
-            });
-        }
-    });
+    self.user = [[RHUser alloc] initWithUserName:userName fullName:fullName webSite:website bio:bio andPictureURL:[NSURL URLWithString:pictureUrl]];
+    [_userViewController updateUIWithUser:_user];
 }
 
 - (NSArray *)dataArrayFromData:(NSData *)data {
