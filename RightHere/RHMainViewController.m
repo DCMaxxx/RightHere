@@ -24,10 +24,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *centerLabel;
 
 @property (strong, nonatomic) NSArray * places;
-@property (strong, nonatomic) RHFoursquareModel * fqController;
+@property (strong, nonatomic) RHFoursquareModel * fqModel;
 
 @property (strong, nonatomic) NSArray * posts;
-@property (strong, nonatomic) RHInstagramModel * igController;
+@property (strong, nonatomic) RHInstagramModel * igModel;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @property (strong, nonatomic) NSTimer * timer;
@@ -48,13 +48,13 @@
 /*----------------------------------------------------------------------------*/
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
-        _fqController = [[RHFoursquareModel alloc] init];
-        [_fqController addObserver:self forKeyPath:@"places" options:NSKeyValueObservingOptionNew context:nil];
-        [_fqController addObserver:self forKeyPath:@"error" options:NSKeyValueObservingOptionNew context:nil];
+        _fqModel = [[RHFoursquareModel alloc] init];
+        [_fqModel addObserver:self forKeyPath:@"places" options:NSKeyValueObservingOptionNew context:nil];
+        [_fqModel addObserver:self forKeyPath:@"error" options:NSKeyValueObservingOptionNew context:nil];
         
-        _igController = [[RHInstagramModel alloc] init];
-        [_igController addObserver:self forKeyPath:@"posts" options:NSKeyValueObservingOptionNew context:nil];
-        [_igController addObserver:self forKeyPath:@"error" options:NSKeyValueObservingOptionNew context:nil];
+        _igModel = [[RHInstagramModel alloc] init];
+        [_igModel addObserver:self forKeyPath:@"posts" options:NSKeyValueObservingOptionNew context:nil];
+        [_igModel addObserver:self forKeyPath:@"error" options:NSKeyValueObservingOptionNew context:nil];
     }
     return self;
 }
@@ -100,7 +100,7 @@
     [_topLabel setHidden:NO];
     [[self searchDisplayController] setActive:NO animated:YES];
     
-    [_igController getMediasFromPlaceId:[place foursquareUID]];
+    [_igModel getMediasFromPlaceId:[place foursquareUID]];
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
@@ -194,9 +194,9 @@
         NSUInteger index = [path row];
         RHPost * post = [_posts objectAtIndex:index];
         RHUserViewController * vc = [segue destinationViewController];
-//        [_igController addObserver:vc forKeyPath:@"user" options:NSKeyValueObservingOptionNew context:nil];
-        [_igController setUserViewController:vc];
-        [_igController searchForUserWithId:[post userId]];
+//        [_igModel addObserver:vc forKeyPath:@"user" options:NSKeyValueObservingOptionNew context:nil];
+        [_igModel setUserViewController:vc];
+        [_igModel searchForUserWithId:[post userId]];
     }
 }
 
@@ -204,7 +204,7 @@
 #pragma mark - Misc private methods
 /*----------------------------------------------------------------------------*/
 - (void)getPlacesNow {
-    [_fqController getPlacesWithName:[[[self searchDisplayController] searchBar] text]];
+    [_fqModel getPlacesWithName:[[[self searchDisplayController] searchBar] text]];
 }
 
 @end
