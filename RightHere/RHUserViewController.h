@@ -7,10 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+
 #import "RHUser.h"
+
+@class RHInstagramModel;
+
 
 @interface RHUserViewController : UIViewController
 
-- (void)updateUIWithUser:(RHUser *)user;
+@property (weak, nonatomic) RHInstagramModel * igModel;
+@property (weak, nonatomic) NSString * userId;
 
 @end

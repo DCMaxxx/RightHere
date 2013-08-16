@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-#import "RHUserViewController.h"
 #import "RHUser.h"
 
 @interface RHInstagramModel : NSObject
@@ -16,8 +15,6 @@
 @property (strong, nonatomic) NSArray * posts;
 @property (strong, nonatomic) NSError * error;
 @property (strong, nonatomic) RHUser * user;
-
-@property (weak, nonatomic) RHUserViewController * userViewController;
 
 - (void)getMediasFromPlaceId:(NSString *)placeId;
 - (void)searchForUserWithId:(NSString *)userId;

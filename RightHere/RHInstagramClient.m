@@ -28,13 +28,13 @@
 /*----------------------------------------------------------------------------*/
 - (NSMutableURLRequest *)requestWithMethod:(NSString *)method path:(NSString *)path parameters:(NSDictionary *)parameter {
     BOOL needsAuthentication = ([parameter objectForKey:@"authentication"] != nil);
-    NSMutableDictionary * tmp = [parameter mutableCopy];
     if (needsAuthentication) {
+        NSMutableDictionary * tmp = [parameter mutableCopy];
         [tmp removeObjectForKey:@"authentication"];
         [tmp setObject:CLIENT_ID forKey:@"client_id"];
         [tmp setObject:CLIENT_SECRET forKey:@"client_secret"];
+        parameter = tmp;
     }
-    parameter = tmp;
     return [super requestWithMethod:method path:path parameters:parameter];
 }
 

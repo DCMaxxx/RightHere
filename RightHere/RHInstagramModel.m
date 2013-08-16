@@ -117,9 +117,9 @@
             }
             id image = post[@"images"];
             NSString * url = [[NSString alloc] init];
-            if ([image isKindOfClass:[NSDictionary class]] && [image[@"thumbnail"] isKindOfClass:[NSDictionary class]]
-                && [image[@"thumbnail"][@"url"] isKindOfClass:[NSString class]])
-                url = image[@"thumbnail"][@"url"];
+            if ([image isKindOfClass:[NSDictionary class]] && [image[@"standard_resolution"] isKindOfClass:[NSDictionary class]]
+                && [image[@"standard_resolution"][@"url"] isKindOfClass:[NSString class]])
+                url = image[@"standard_resolution"][@"url"];
             if ([text length] || [url length]) {
                 RHPost * post = [[RHPost alloc] initWithText:text userId:userId andPictureURL:[NSURL URLWithString:url]];
                 [result addObject:post];
@@ -139,7 +139,6 @@
     NSString * bio = ([parsedData[@"bio"] isKindOfClass:[NSString class]] ? parsedData[@"bio"] : @"");
     NSString * website = ([parsedData[@"website"] isKindOfClass:[NSString class]] ? parsedData[@"website"] : @"");
     self.user = [[RHUser alloc] initWithUserName:userName fullName:fullName webSite:website bio:bio andPictureURL:[NSURL URLWithString:pictureUrl]];
-    [_userViewController updateUIWithUser:_user];
 }
 
 - (NSArray *)dataArrayFromData:(NSData *)data {

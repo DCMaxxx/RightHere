@@ -194,9 +194,8 @@
         NSUInteger index = [path row];
         RHPost * post = [_posts objectAtIndex:index];
         RHUserViewController * vc = [segue destinationViewController];
-//        [_igModel addObserver:vc forKeyPath:@"user" options:NSKeyValueObservingOptionNew context:nil];
-        [_igModel setUserViewController:vc];
-        [_igModel searchForUserWithId:[post userId]];
+        [vc setIgModel:_igModel];
+        [vc setUserId:[post userId]];
     }
 }
 

@@ -8,6 +8,7 @@
 
 #import "UIImageView+AFNetworking.h"
 #import "RHUserViewController.h"
+#import "RHInstagramModel.h"
 
 #import "RHUser.h"
 
@@ -27,6 +28,23 @@
 /*----------------------------------------------------------------------------*/
 @implementation RHUserViewController
 
+
+/*----------------------------------------------------------------------------*/
+#pragma mark - UIViewDelgate
+/*----------------------------------------------------------------------------*/
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [_igModel addObserver:self forKeyPath:@"user" options:NSKeyValueObservingOptionNew context:nil];
+    [_igModel addObserver:self forKeyPath:@"error" options:NSKeyValueObservingOptionNew context:nil];
+    [_igModel searchForUserWithId:_userId];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [_igModel removeObserver:self forKeyPath:@"user"];
+    [_igModel removeObserver:self forKeyPath:@"error"];
+}
+
 /*----------------------------------------------------------------------------*/
 #pragma mark - Observer
 /*----------------------------------------------------------------------------*/
@@ -36,12 +54,12 @@
         UIAlertView * av = [[UIAlertView alloc] initWithTitle:[error domain]
                                                       message:[error userInfo][@"desc"]
                                                      delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [av show];        
+        [av show];
     }
-//    else if ([keyPath isEqualToString:@"user"]) {
-//        RHUser * user = [object valueForKeyPath:keyPath];
-//        [self updateUIWithUser:user];
-//    }
+    else if ([keyPath isEqualToString:@"user"]) {
+        RHUser * user = [object valueForKeyPath:keyPath];
+        [self updateUIWithUser:user];
+    }
 }
 
 
@@ -54,7 +72,7 @@
 
 
 /*----------------------------------------------------------------------------*/
-#pragma mark - UI Update methods
+#pragma mark - Misc private methods
 /*----------------------------------------------------------------------------*/
 - (void)updateUIWithUser:(RHUser *)user {
     [_picture setImageWithURL:[user pictureURL] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
