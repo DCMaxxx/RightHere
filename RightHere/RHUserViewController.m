@@ -30,7 +30,7 @@
 
 
 /*----------------------------------------------------------------------------*/
-#pragma mark - UIViewDelgate
+#pragma mark - UIViewController
 /*----------------------------------------------------------------------------*/
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -52,7 +52,7 @@
     if ([keyPath isEqualToString:@"error"]) {
         NSError * error = [object valueForKeyPath:keyPath];
         UIAlertView * av = [[UIAlertView alloc] initWithTitle:[error domain]
-                                                      message:[error userInfo][@"desc"]
+                                                      message:@"Something went wrong. Please try again later"
                                                      delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [av show];
     }
